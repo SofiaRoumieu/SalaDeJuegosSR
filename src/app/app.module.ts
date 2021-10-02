@@ -10,7 +10,7 @@ import { RegistroComponent } from './Componentes/registro/registro.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
-import { environment } from 'src/environments/environment';
+import { firebaseConfig  } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { environment } from 'src/environments/environment';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]

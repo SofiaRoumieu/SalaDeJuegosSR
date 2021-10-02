@@ -12,7 +12,7 @@ const routes: Routes=[
   {path:'Login', component: LoginComponent},
   {path:'Registro', component:RegistroComponent},
   {path:'Home', component: HomeComponent},
-  {path:'', redirectTo:'Home', pathMatch:'full'},
+  {path:'', redirectTo:'Home', pathMatch:'full'}
   //{path:'**', component: PageNotFoundComponent}
 ];
 
