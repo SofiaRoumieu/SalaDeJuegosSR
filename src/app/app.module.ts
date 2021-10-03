@@ -3,14 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './Componentes/home/home.component';
-import { LoginComponent } from './Componentes/login/login.component';
-import { QuienSoyComponent } from './Componentes/quien-soy/quien-soy.component';
-import { RegistroComponent } from './Componentes/registro/registro.component';
+import { HomeComponent } from './page/home/home.component';
+import { LoginComponent } from './page/login/login.component';
+import { QuienSoyComponent } from './page/quien-soy/quien-soy.component';
+import { RegistroComponent } from './page/registro/registro.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { firebaseConfig  } from 'src/environments/environment';
+import { MenuPrincipalComponent } from './page/menu-principal/menu-principal.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -18,12 +22,17 @@ import { firebaseConfig  } from 'src/environments/environment';
     HomeComponent,
     LoginComponent,
     QuienSoyComponent,
-    RegistroComponent
+    RegistroComponent,
+    MenuPrincipalComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

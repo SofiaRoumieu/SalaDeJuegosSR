@@ -1,0 +1,35 @@
+<body>
+    <div id="id01">
+      <form class="modal-content animate" >
+        <div style="margin-top: 3rem;" class="container">
+          <div class="imgcontainer">
+            <img src="./assets/imagenes/email.jpg" alt="Avatar" class="avatar" >
+          </div>
+          <label><b>Usuario</b></label>
+          <input class="form-control" type="text" [(ngModel)]="user" [ngModelOptions]="{standalone: true }"  placeholder="Ingresá tu nombre de usuario" name="user" required>
+          <label><b>Cuil</b></label>
+          <input class="form-control" type="number" [(ngModel)]="cuil" [ngModelOptions]="{standalone: true}" placeholder="Ingresátu Cuit/Cuil" name="email" required>
+          <label><b>Sexo</b></label>
+         
+          <select style=" margin-bottom: 2rem;" [(ngModel)]="sexo" [ngModelOptions]="{standalone: true}" class="browser-default custom-select">
+            <option selected value="Femenino">Femenino</option>
+            <option value="Masculino">Masculino</option>
+          </select>
+          <label><b>Email</b></label>
+          <input class="form-control" type="email" [(ngModel)]="email" [ngModelOptions]="{standalone: true}" placeholder="Ingresá tu correo" name="email" required>
+  
+          <label><b>Clave</b></label>
+          <input class="form-control" type="password" [(ngModel)]="clave" [ngModelOptions]="{standalone: true}" placeholder="Contraseña" name="psw" required>
+  
+          <label><b>Repita la clave</b></label>
+          <input class="form-control" type="password" [(ngModel)]="clave2" [ngModelOptions]="{standalone: true}" placeholder="Repetí tu contraseña" name="psw-repeat" required>
+          <!-- <input type="checkbox" checked="checked">Recordar mis datos
+          <p>creando la cuenta aceptando los<a  onclick="document.getElementById('id01').style.display='none'"  >Terminos y condiciones</a>.</p> -->
+  
+          <div class="clearfix row" style="justify-content: center;">
+            <button (click)="registro()"  type="submit" class="btn-success btn-lg boton " onclick="this.blur();">Registrarme</button>
+          </div>
+        </div>
+      </form>
+    </div>
+

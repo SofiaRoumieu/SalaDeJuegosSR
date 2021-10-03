@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { QuienSoyComponent } from './Componentes/quien-soy/quien-soy.component';
-import { LoginComponent } from './Componentes/login/login.component';
-import { RegistroComponent } from './Componentes/registro/registro.component';
-import { HomeComponent } from './Componentes/home/home.component';
+import { QuienSoyComponent } from './page/quien-soy/quien-soy.component';
+import { LoginComponent } from './page/login/login.component';
+import { RegistroComponent } from './page/registro/registro.component';
+import { HomeComponent } from './page/home/home.component';
+import { ErrorComponent } from './page/error/error.component';
 
 
 const routes: Routes=[
@@ -12,8 +13,8 @@ const routes: Routes=[
   {path:'Login', component: LoginComponent},
   {path:'Registro', component:RegistroComponent},
   {path:'Home', component: HomeComponent},
-  {path:'', redirectTo:'Home', pathMatch:'full'}
-  //{path:'**', component: PageNotFoundComponent}
+  {path:'', redirectTo:'Home', pathMatch:'full'},
+  {path:'**', component: ErrorComponent}
 ];
 
 @NgModule({
