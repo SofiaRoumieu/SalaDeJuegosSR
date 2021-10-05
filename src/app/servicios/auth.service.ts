@@ -30,15 +30,15 @@ export class AuthService {
         })
         
       })
-
-
   }
+
     
   getLogueado(){
     let user = this.AFauth.currentUser;
     if(user != undefined && user!= null)
     { 
-      console.info(JSON.stringify(user))
+      console.log(JSON.stringify(user));
+      console.info(JSON.stringify(user));
       return true;
     }
     else
@@ -50,6 +50,10 @@ export class AuthService {
   getCurrentUser() {
      let user = this.AFauth.currentUser;
     return user;
+  }
+
+  isLoggedIn() {
+    return this.AFauth.authState;
   }
 
   login(email: string, password: string) {
@@ -84,22 +88,14 @@ export class AuthService {
             cuil:cuil,
             sexo:sexo,
             puntajes : [
-              {'adivinaG': 0},
-              {'agilidadG': 0},
-              {'anagramaG': 0},
-              {'pptG': 0},
+              {'ahorcadoG': 0},
+              {'mayorMenosG': 0},
+              {'preguntadosG': 0},
               {'simonG': 0},
-              {'tatetiG': 0},
-              {'memotestG':0},
-              {'adivinaP': 0},
-              {'agilidadP': 0},
-              {'anagramaP': 0},
-              {'pptP': 0},
-              {'simonP': 0},
-              {'tatetiP': 0},
-              {'memotestP':0},
-              {'tatetiE':0},
-              {'pptE':0}
+              {'ahorcadoP': 0},
+              {'mayorMenosP': 0},
+              {'preguntadosP': 0},
+              {'simonP': 0}
             ]
           })
           resolve(res)

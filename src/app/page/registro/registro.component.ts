@@ -33,7 +33,11 @@ export class RegistroComponent implements OnInit {
       {
          this.authService.register(this.user,this.cuil ,this.sexo,this.email, this.clave)
          .then(auth => {
-           this.router.navigate(['/Home']);
+           this.authService.login(this.email, this.clave)
+           .then(res => {
+            this.router.navigate(['/Home']);
+          })
+           //this.router.navigate(['/Home']);
          })
          .catch(err => {
            this.toastr.error(err, "ERROR");

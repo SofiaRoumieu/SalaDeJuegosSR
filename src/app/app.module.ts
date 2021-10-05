@@ -15,6 +15,10 @@ import { MenuPrincipalComponent } from './page/menu-principal/menu-principal.com
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
+import { AhorcadoComponent } from './Componentes/ahorcado/ahorcado.component';
+import { MayoOMenorComponent } from './Componentes/mayo-omenor/mayo-omenor.component';
+import { SimonDiceComponent } from './Componentes/simon-dice/simon-dice.component';
+import { PreguntadosComponent } from './Componentes/preguntados/preguntados.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,11 @@ import { CommonModule } from '@angular/common';
     LoginComponent,
     QuienSoyComponent,
     RegistroComponent,
-    MenuPrincipalComponent
+    MenuPrincipalComponent,
+    AhorcadoComponent,
+    MayoOMenorComponent,
+    SimonDiceComponent,
+    PreguntadosComponent
   ],
   imports: [
     CommonModule,

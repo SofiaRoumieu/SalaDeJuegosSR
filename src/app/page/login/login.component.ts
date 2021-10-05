@@ -13,6 +13,8 @@ export class LoginComponent implements OnInit {
 private subscription: Subscription;
   email = '';
   clave= '';
+  nombre="";
+  estado=false;
   progreso: number;
   progresoMensaje="esperando...";
   logeando=true;
@@ -65,7 +67,7 @@ private subscription: Subscription;
     this.auth.login(this.email, this.clave)
       .then(res => {
         this.spiner=false;
-        this.rutas.navigate(['/Home']);
+        this.rutas.navigate(['/Home']).then(()=> this.usuarioLogueado());
       })
       .catch(error => {
        
@@ -74,6 +76,18 @@ private subscription: Subscription;
         this.logeando =true;
        
       })
+  }
+
+  usuarioLogueado() { 
+    let usuario= this.auth.getUserUid();//.getCurrentUser();
+    if(usuario == null) {
+    this.estado =false;
+    }
+    else if(usuario!=null){
+      console.log("UID::"+JSON.stringify(usuario));
+      //this.nombre= usuario;
+      this.estado =true;
+    }
   }
 
 
