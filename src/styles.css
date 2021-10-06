@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    text-align: center;
+    background: url("./assets/imagenes/ladrillosVintage.jpg") 0px 0px  repeat;
+    background-size: auto;
+    background-attachment: fixed;
+    }
+
+    .loguito{
+        height: 20px;
+    }
