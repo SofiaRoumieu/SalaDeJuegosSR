@@ -20,11 +20,11 @@
   /* Header */
   
   header{
-   /* background-image: url("http://cdn.clubaindependiente.com/fondos/estadio.jpg");*/
-   background-image: url("/assets/imagenes/yo.jpg");
+   /* background-image: url("/assets/imagenes/yo.jpg");*/
+   background-color: black;
     background-repeat: no-repeat;
     background-position: center;
-    max-height: 600px;
+    max-height: 400px;
   }
   
   header .menu{
@@ -46,7 +46,7 @@
   }
   header .contenedor_texto{
     display: flex;
-    margin: 190px 0px;
+    margin: 130px 0px;
     justify-content: center;
     align-content: center;
   

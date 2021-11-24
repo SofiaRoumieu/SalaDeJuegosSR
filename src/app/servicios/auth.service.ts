@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth'
 import { Router } from '@angular/router';
-import { AngularFirestore } from '@angular/fire/firestore'
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore'
+import * as firebase from 'firebase';
 
 
 @Injectable({
@@ -9,10 +10,13 @@ import { AngularFirestore } from '@angular/fire/firestore'
 })
 export class AuthService {
 
+  dbUsersRef:AngularFirestoreCollection<any>;
+
   constructor(
     private AFauth: AngularFireAuth,
     private router: Router,
     private db: AngularFirestore) {
+      this.dbUsersRef=this.db.collection("usuarios");
   }
 
   getUserUid()
@@ -47,6 +51,21 @@ export class AuthService {
     }
   }
 
+  async getUserByMail(email: string) {
+
+    console.log("buscando usuario por mail");
+    let usrsRef = await this.dbUsersRef.ref.where("email", "==", email).get();
+    let listado:Array<any> = new Array<any>();
+    usrsRef.docs.map(function(x){
+        listado.push(x.data());
+    });
+    return listado;
+  }
+
+  /*getCurrentUserMail(): string {
+    return firebase.auth().currentUser.email;
+  }*/
+
   getCurrentUser() {
      let user = this.AFauth.currentUser;
     return user;
@@ -61,6 +80,12 @@ export class AuthService {
     return new Promise((resolve, reject) => {
       this.AFauth.signInWithEmailAndPassword(email, password)
         .then(user => {
+          let fecha=new Date();
+          this.db.collection('ingresos').add({
+            email: email,
+            fechaacceso:  fecha.getDate() + '-' + (fecha.getMonth()+1) +  '-' +fecha.getFullYear(),
+            dato: 'Ingreso al sistema'
+        })
           resolve(user);
         })
         .catch(err => {
@@ -75,27 +100,22 @@ export class AuthService {
     })
   }
 
-  register(name: string,cuil:number,sexo:string,email: string, password: string) {
+  register(email: string, password: string) {
     return new Promise((resolve, reject) => {
       this.AFauth.createUserWithEmailAndPassword(email, password)
         .then(res => {
           console.log(res.user.uid);
           const uid = res.user.uid;
           this.db.collection("usuarios").doc(res.user.uid).set({
-            nombre: name,
             uid: uid,
+            email:email,
+            clave:password,
             perfil: 'usuario',
-            cuil:cuil,
-            sexo:sexo,
             puntajes : [
-              {'ahorcadoG': 0},
-              {'mayorMenosG': 0},
-              {'preguntadosG': 0},
-              {'simonG': 0},
-              {'ahorcadoP': 0},
-              {'mayorMenosP': 0},
-              {'preguntadosP': 0},
-              {'simonP': 0}
+              {'ahorcadoJugados': 0},
+              {'mayorMenosJugados': 0},
+              {'preguntadosJugados': 0},
+              {'simonJugados': 0}
             ]
           })
           resolve(res)
