@@ -25,7 +25,25 @@ export class AuthService {
         this.AFauth.onAuthStateChanged(function(user){
             if(user)
             {
+              console.log(user);
               resolve(user.uid)
+            }
+            else
+            {
+              resolve("0")
+            }
+        })
+        
+      })
+  }
+  getUserEmail()
+  {  
+      return new Promise((resolve, reject) => {
+        this.AFauth.onAuthStateChanged(function(user){
+            if(user)
+            {
+              console.log(user);
+              resolve(user.email)
             }
             else
             {
@@ -38,9 +56,11 @@ export class AuthService {
 
     
   getLogueado(){
+
     let user = this.AFauth.currentUser;
     if(user != undefined && user!= null)
-    { 
+    {
+      console.log(user); 
       console.log(JSON.stringify(user));
       console.info(JSON.stringify(user));
       return true;

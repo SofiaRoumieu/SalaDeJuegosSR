@@ -24,7 +24,7 @@ export class AuthGuard implements CanActivate {
         
         if(user != 0 && user!=undefined)
         { 
-         console.info(user);
+         console.log(user);
           return true;
         }
         else
