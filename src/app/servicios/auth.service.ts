@@ -55,9 +55,10 @@ export class AuthService {
   }
 
     
-  getLogueado(){
+  getLogueado (){
 
     let user = this.AFauth.currentUser;
+    console.log(user);
     if(user != undefined && user!= null)
     {
       console.log(user); 
