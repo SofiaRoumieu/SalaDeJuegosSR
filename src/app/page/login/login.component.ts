@@ -43,6 +43,12 @@ private subscription: Subscription;
     this.email = "invitado@invitado.com";
     this.clave = "123456";
   }
+
+  administrador(){
+    this.email = "sroumieu@provincianet.com.ar";
+    this.clave = "123456";
+  }
+
   invitado2(){
     this.email = "sofia@saladejuegossr.com";
     this.clave = "123456";
